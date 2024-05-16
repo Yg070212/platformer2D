@@ -611,7 +611,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 638319654}
   animator: {fileID: 638319659}
 --- !u!95 &638319659
 Animator:

@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool facingRight = true;
     private int facingDirection = 1;
 
-    [Header("Animation")]
     public Animator animator;
     private bool isMove;
 
@@ -61,13 +60,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //함수 이름 앞에 마우스커서를 두고 Ctlr + R + R
+        HandleAnimation();
         CollisionCheck();
         HandleInput();
         Move();
-
-        
-        HandleAnimation();
         HandleFlip();
+ 
         FallDownCheck();
     }
     /// <summary>
@@ -86,6 +84,28 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
 
         JumpButton();
+    }
+
+    private void HandleFlip()
+    {
+        // 오른쪽으로 방향을 바라보고 있을때
+        if(facingRight && moveInput < 0)
+        {
+            Flip();
+
+        }
+        // 왼쪽 방향으로 바라보고 있을때
+        else if(!facingRight && moveInput > 0)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        facingDirection = facingDirection * -1;
+        facingRight = !facingRight;
+        spriteRenderer.flipX = !facingRight;
     }
 
     private void JumpButton()
@@ -113,10 +133,6 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -11)
             InitializePlayerStatus();
     }
-    private void HandleFlip()
-    {
-
-    }
 
     private void HandleAnimation()
     {
@@ -126,7 +142,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         // SetFloat 함수에 의해서 y최대일 때 1로 변환.. y 최소일 때 -1로 변환
         //점프 키를 누르면. 순간적으로 y높이 증가, 중력에 의해
-        animator.SetFloat("yBelocity", rigidbody2D.velocity.y);
+        animator.SetFloat("yVelocity", rigidbody2D.velocity.y);
     }
 
     private void OnDrawGizmos()
