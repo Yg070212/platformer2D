@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void InitializePlayerStatus()
     {
-        rigidbody2D.velocity = Vector3.zero;
+        rigidbody2D.velocity = Vector2.zero;
         facingRight = true;
         spriteRenderer.flipX = false;
         transform.position = startTransform.position;
@@ -65,9 +65,20 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         Move();
         HandleFlip();
- 
         FallDownCheck();
     }
+
+    private void HandleAnimation()
+    {
+        // rigidbody.velocity : 현재 rigidbody 속도 = 0 움직이지 않는 상태, != 0 움직이고 있는 상태
+        isMove = rigidbody2D.velocity.x != 0;
+        animator.SetBool("isMove", isMove);
+        animator.SetBool("isGrounded", isGrounded);
+        // SetFloat 함수에 의해서 y최대일 때 1로 변환.. y 최소일 때 -1로 변환
+        //점프 키를 누르면. 순간적으로 y높이 증가, 중력에 의해서 점점 내려갈겁니다.
+        animator.SetFloat("yVelocity", rigidbody2D.velocity.y);
+    }
+
     /// <summary>
     /// 점프를 할 때 땅인지 아닌지 체크 하는지 기능 -> collider check
     /// </summary>
@@ -132,17 +143,6 @@ public class PlayerController : MonoBehaviour
         // y의 높이가 특정 지점보다 낮을때 낙사한 것으로 간주한다. =>
         if (transform.position.y < -11)
             InitializePlayerStatus();
-    }
-
-    private void HandleAnimation()
-    {
-        // rigidbody.velocity : 현재 rigidbody 속도 = 0 움직이지 않는 상태, != 0 움직이고 있는 상태
-        isMove = rigidbody2D.velocity.x != 0;
-        animator.SetBool("isMove", isMove);
-        animator.SetBool("isGrounded", isGrounded);
-        // SetFloat 함수에 의해서 y최대일 때 1로 변환.. y 최소일 때 -1로 변환
-        //점프 키를 누르면. 순간적으로 y높이 증가, 중력에 의해
-        animator.SetFloat("yVelocity", rigidbody2D.velocity.y);
     }
 
     private void OnDrawGizmos()
