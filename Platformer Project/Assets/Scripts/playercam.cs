@@ -19,6 +19,9 @@ public class playercam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 벡터의 합
         transform.position = playerTransform.position + offset;
+        // 플레이어가 움직일 겁니다.
+        offset = transform.position - playerTransform.position;
     }
 }
