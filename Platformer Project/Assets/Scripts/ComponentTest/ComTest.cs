@@ -32,5 +32,20 @@ public class ComTest : MonoBehaviour
         Debug.Log("OneEnable 角青");
     }
 
+    private void FixedUpdate()
+    {
+        Debug.Log("FixiedUpdate 角青");
+    }
+
+    private void Update()
+    {
+        Debug.Log("Update 角青");
+    }
+
+    private void LateUpdate()
+    {
+        Debug.Log("LateUpdate 角青");
+    }
+     
 
 }
