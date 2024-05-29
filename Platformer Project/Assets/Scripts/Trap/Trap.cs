@@ -14,7 +14,10 @@ public class Trap : MonoBehaviour
     // Layer - 이벤트를 작동 할 때 특정 대상만 분류해주는 역할. 한 오브젝트가 여러개의 레이어를 소유 할 수 있다.
     // 그룹 단위의 구별을 할 때 사용한다.
     // Collider 2D이고 Rigidbody 2D 여야한다. 필수조건
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    protected bool isWorking = false;
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         /*플레이어 태그를 갖고 있는가?*/
         if (collision.collider.CompareTag("Player"))
@@ -24,7 +27,7 @@ public class Trap : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         /*플레이어 태그를 갖고 있는가?*/
         if (collision.CompareTag("Player"))
