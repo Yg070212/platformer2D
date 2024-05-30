@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playercam : MonoBehaviour
+public class Playercam : MonoBehaviour
 {
     //벡터의 연산으로 구현
 
