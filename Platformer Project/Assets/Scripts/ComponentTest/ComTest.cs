@@ -46,6 +46,4 @@ public class ComTest : MonoBehaviour
     {
         Debug.Log("LateUpdate ½ÇÇà");
     }
-     
-
 }
