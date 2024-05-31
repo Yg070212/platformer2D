@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 6348035285916742565, guid: 42dd8643a0d01204daf42ce52965e51d, type: 3}
   spawnTransform: {fileID: 1380795466644103305}
+  playerCam: {fileID: 410434818370287617}
 --- !u!4 &2095318162
 Transform:
   m_ObjectHideFlags: 0

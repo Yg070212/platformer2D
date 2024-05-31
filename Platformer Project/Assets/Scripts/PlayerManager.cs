@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform spawnTransform; // check point, save point 시작 위치 변경해주는 기능
 
     private PlayerController playerController;         // playerController에서 빠진 컴포넌트 들을 추가해줘야 합니다.
+    [SerializeField] private Playercam playerCam;                       // playerCam 클래스에 접근. RespawnPlayer에서 playerCam 접근할 수 있게 코드를 작성해보세요.
+
     private GameObject player;
     
     // Start is called before the first frame update
@@ -36,5 +38,7 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(PlayerPrefab, spawnTransform.position, Quaternion.identity);
 
         playerController = player.GetComponent<PlayerController>(); // 다른 코드에 접근 하는 방법.
+        playerCam.playerTransform = player.transform;
+        playerCam.SetOffset();
     }
 }

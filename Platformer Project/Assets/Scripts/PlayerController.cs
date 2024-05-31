@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         //transform.position = new Vector2(transform.position.x, 10);
 
         // 현재 내 위치를 startTransform으로 변경
-        transform.position = startTransform.position;
+        InitializePlayerStatus();
     }
 
     void InitializePlayerStatus()
