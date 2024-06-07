@@ -13,7 +13,6 @@ public class PrefabStudy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // GetComponent 코드 작성
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
