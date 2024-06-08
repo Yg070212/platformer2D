@@ -10,6 +10,8 @@ public class Trap_Saw : Trap
     public float speed = 5f;
     public int moveIndex = 0;
     public bool OnGoingForward = true;
+    public bool IsTrapOn = true;            // MoveTrap함수를 이동 시킬지 말지 제어하는 함수
+    public float stopTime = 1f;
 
     private void Start()
     {
@@ -22,7 +24,19 @@ public class Trap_Saw : Trap
     {
         anim.SetBool("isWorking", isWorking);
 
-        MoveTrap();
+        // 코루틴을 Update 에서 함부로 사용하면 안됀다
+        // IsTrapOn 에 따라 MoveTrap을 실행 시키는 조건
+        if(IsTrapOn == true)
+        {
+            MoveTrap();
+        }
+    }
+
+    IEnumerator CoMoveTrap()
+    {
+        IsTrapOn = false;
+        yield return new WaitForSeconds(stopTime);
+        IsTrapOn = true;
     }
 
     private void MoveTrap()
@@ -35,6 +49,7 @@ public class Trap_Saw : Trap
         {
             //moveIndex = moveIndex + 1;
             moveIndex = moveIndex + 1;
+            StartCoroutine (CoMoveTrap());
         }
         // 다음 목표 지점이 없으면.. move Index = 0.
         if(movePositions.Length <= moveIndex)
