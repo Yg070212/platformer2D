@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public float groundDistance = 2f;
     public LayerMask groundLayer;
 
+    [SerializeField] ParticleController particleController;
+
     [Header("Flip")]
     public SpriteRenderer spriteRenderer;
     private bool facingRight = true;
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private void CollisionCheck()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundLayer);
+        particleController.isGround = isGrounded;
     }
 
     /// <summary>
@@ -92,6 +95,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            particleController.PlayParticle();
+        }
+
         moveInput = Input.GetAxis("Horizontal");
 
         JumpButton();
