@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if(score > PlayerPrefs.GetFloat(GameData.BestScore))
             PlayerPrefs.SetFloat(GameData.BestScore, score);
         }
     }
@@ -65,6 +66,5 @@ public class GameManager : MonoBehaviour
     public void SaveGameDifficulty()
     {
         PlayerPrefs.SetInt(GameData.GameDifficulty, difficulty); // GameDifficulty 이름으로. difficulty변수(정수) 저장.
-
     }
 }
