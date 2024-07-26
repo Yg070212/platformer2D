@@ -14,7 +14,7 @@ public class MainMenu_UI : MonoBehaviour
     private void Update()
     {
         levelText.text = GameManager.instance.ReturnCurrentDifficulty();
-        curretScoreText.text = GameManager.instance.score.ToString();
+        //curretScoreText.text = GameManager.instance.score.ToString();
         bestScoreText.text = $"최고 점수 : {PlayerPrefs.GetFloat(GameData.BestScore)}";
     }
 
