@@ -26,15 +26,25 @@ public class PlayerController : MonoBehaviour
     public float groundDistance = 2f;
     public LayerMask groundLayer;
 
-    [SerializeField] ParticleController particleController;
-
     [Header("Flip")]
     public SpriteRenderer spriteRenderer;
     private bool facingRight = true;
     private int facingDirection = 1;
 
+    [Header("HP")]
+    public int currentHp;
+    public int maxHp = 5;
+
+
+
+    [SerializeField] ParticleController particleController;
     public Animator animator;
     private bool isMove;
+
+    private void Awake()
+    {
+        currentHp = maxHp;
+    }
 
     void Start()
     {
