@@ -23,6 +23,11 @@ public class PatternController : MonoBehaviour
 
     private void Update()
     {
+        if(currentPattern.activeSelf == false)
+        {
+            ChangePattern();
+        }
+
         // GameController 현재 패턴이 실행 중인지 아닌지 정보
 
         // ChangePattern

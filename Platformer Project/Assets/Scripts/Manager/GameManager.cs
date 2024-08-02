@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float score;
 
 
+
     private void Update()
     {
         score += Time.deltaTime;
