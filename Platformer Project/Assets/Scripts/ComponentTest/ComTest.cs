@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class ComTest : MonoBehaviour

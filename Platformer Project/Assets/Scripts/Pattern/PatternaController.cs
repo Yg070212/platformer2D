@@ -11,19 +11,33 @@ public class PatternController : MonoBehaviour
     public int patternIndex = 0;
     public GameObject currentPattern;
 
-    void Start()
+    bool patternStart = true;
+
+    void PatternStart()
+    {
+        ChangePattern();
+        patternStart = false;
+    }
+
+    private void Awake()
     {
         foreach (var pattern in patterns)
         {
             pattern.gameObject.SetActive(false);
         }
-
-        ChangePattern();
     }
 
     private void Update()
     {
-        if(currentPattern.activeSelf == false)
+       // if(MainController.instance.isGameStartl == false) return;
+
+        if (patternStart == true && MainController.instance.isGameStartl == true)
+        {
+            PatternStart();
+        }
+
+
+        if(MainController.instance.isGameStartl && currentPattern.activeSelf == false)
         {
             ChangePattern();
         }
